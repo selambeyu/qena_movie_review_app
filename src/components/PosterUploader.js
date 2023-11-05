@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { useState } from "react"; // Import useState
 import { useDropzone } from "react-dropzone";
 import {
   Box,
@@ -49,7 +48,7 @@ export const PosterUploader = (props) => {
     maxFiles,
     maxSize,
     minSize,
-    onDrop, // Use the custom drop handler
+    onDrop,
   });
 
   return (
