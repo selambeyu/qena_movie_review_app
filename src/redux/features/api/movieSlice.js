@@ -14,6 +14,11 @@ export const movieSlice = createApi({
       transformResponse: (response) => response,
       providesTags: ["Movie"],
     }),
+    getSearchedMovies: builder.query({
+      query: (searchText) => `/movies?title=${searchText}&year=${searchText}`,
+      transformResponse: (response) => response,
+      providesTags: ["Movie"],
+    }),
     getMovie: builder.query({
       query: (movieId) => `/movies/${movieId}`,
       providesTags: (result, error, arg) => [{ type: "Movie", id: arg }],
@@ -32,5 +37,9 @@ export const movieSlice = createApi({
   }),
 });
 
-export const { useAddMovieMutation, useGetMovieQuery, useGetMoviesQuery } =
-  movieSlice;
+export const {
+  useAddMovieMutation,
+  useGetMovieQuery,
+  useGetMoviesQuery,
+  useGetSearchedMoviesQuery,
+} = movieSlice;

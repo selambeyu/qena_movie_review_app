@@ -9,10 +9,8 @@ export const reviewSlice = createApi({
   endpoints: (builder) => ({
     getReviews: builder.query({
       query: (movieId) => `/reviews/${movieId}`,
-      providesTags: (result = [], error, arg) => [
-        "Review",
-        ...result.map(({ id }) => ({ type: "Review", id })),
-      ],
+      transformResponse: (response) => response,
+      providesTags: ["Review"],
     }),
 
     addReview: builder.mutation({
